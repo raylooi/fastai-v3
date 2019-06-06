@@ -13,7 +13,7 @@
 (Dataset can be downloaded from -->[<a href="https://github.com/garythung/trashnet/blob/master/data/dataset-resized.zip">here</a>].)<br><br>
   
 Transfer learning was first done using a pretrained ResNet50 as backbone and a single hidden layer as classifier. 
-With the initial layers frozen, weights were learnt using the last fully connected layers.<br> 
+With the initial layers frozen, weights were learnt using the last fully connected layers.
 After this, the layers were 'unfreezed' so the entire model was trained.<br><br> 
       Final training loss = 0.128775 and error rate=0.071287 (93% accuracy) after 20 epochs.<br>
       Total training time was about 30 minutes using ASUS GL703GS-E5010T with GTX 1070 GPU card. 
