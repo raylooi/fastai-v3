@@ -20,7 +20,7 @@
 	<?php
 
 	// open this directory 
-	$myDirectory = opendir("images");
+	$myDirectory = opendir("../view/images");
 
 	// get each entry
 	while($entryName = readdir($myDirectory)) {
@@ -42,7 +42,7 @@
 		for($index=0; $index < $indexCount; $index++) {
 			$extension = substr($dirArray[$index], -3);
 			if ($extension == 'jpg'){ // list only jpgs
-				echo '<li><img src="images/' . $dirArray[$index] . '" alt="Image" /><span>' . $dirArray[$index] . '</span>';
+				echo '<li><img src="../view/images/' . $dirArray[$index] . '" alt="Image" /><span>' . $dirArray[$index] . '</span>';
 			}	
 		}
 		?>
