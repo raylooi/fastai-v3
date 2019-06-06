@@ -9,11 +9,10 @@
   <div class='center'>
     <div class='title'>Classify Waste for Sorting</div>
     <p align="justify">
-      <b>Abstract</b>: The classifier was trained using Fast.AI libraries with ResNet50 as the model.<br> 
-    Training was done on a set of 2527 images split into 2022 for training and 505 for validation. Object classes: 'cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash'.<br> 
+      <b>Abstract</b>: Training was done on a set of 2527 images split into 2022 for training (80%) and 505 for validation (20%). Object classes: 'cardboard', 'glass', 'metal', 'paper', 'plastic', 'trash'.<br> 
 (Dataset can be downloaded from -->[<a href="https://github.com/garythung/trashnet/blob/master/data/dataset-resized.zip">here</a>].)<br><br>
   
-Transfer learning was first done using a pretrained ResNet50 as backbone and a single hidden layer as classifier.<br> 
+Transfer learning was first done using a pretrained ResNet50 as backbone and a single hidden layer as classifier. 
 With the initial layers frozen, weights were learnt using the last fully connected layers.<br> 
 After this, the layers were 'unfreezed' so the entire model was trained.<br><br> 
       Final training loss = 0.128775 and error rate=0.071287 (93% accuracy) after 20 epochs.<br>
