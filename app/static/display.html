@@ -1,54 +1,147 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-		<title>Title</title>
-		<meta name="language" content="en" />  
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {
+  box-sizing: border-box;
+}
 
-		<meta name="description" content="" />  
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-		<meta name="keywords" content="" />
-		<style type="text/css">
-			ul li {list-style: none; margin-bottom: 15px;}
-			ul li img {display: block;}
-			ul li span {display: block;}
-		</style>
-	</head>
-	<body>
+.header {
+  text-align: center;
+  padding: 32px;
+}
 
-	<?php
+.row {
+  display: -ms-flexbox; /* IE 10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE 10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
 
-	// open this directory 
-	$myDirectory = opendir("../view/images");
+/* Create two equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE 10 */
+  flex: 25%;
+  padding: 0 4px;
+}
 
-	// get each entry
-	while($entryName = readdir($myDirectory)) {
-		$dirArray[] = $entryName;
-	}
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
 
-	// close directory
-	closedir($myDirectory);
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  font-size: 18px;
+}
 
-	//	count elements in array
-	$indexCount	= count($dirArray);
+.btn:hover {
+  background-color: #ddd;
+}
 
-	?>
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+</style>
+</head>
+<body>
 
-	<ul>
+<!-- Header -->
+<!--
+<div class="header" id="myHeader">
+  <h1>Image Grid</h1>
+  <p>Click on the buttons to change the grid view.</p>
+  <button class="btn" onclick="one()">1</button>
+  <button class="btn active" onclick="two()">2</button>
+  <button class="btn" onclick="four()">4</button>
+</div>
+-->
 
-		<?php
-		// loop through the array of files and print them all in a list
-		for($index=0; $index < $indexCount; $index++) {
-			$extension = substr($dirArray[$index], -3);
-			if ($extension == 'jpg'){ // list only jpgs
-				echo '<li><img src="../view/images/' . $dirArray[$index] . '" alt="Image" /><span>' . $dirArray[$index] . '</span>';
-			}	
-		}
-		?>
 
-	</ul>	
+<!-- Photo Grid -->
+<div class="row"> 
+  <div class="column">
+    <img src="../view/images/glass_160.jpg" style="width:100%">
+    <img src="../view/images/glass_160.jpg" style="width:100%">
+    <img src="../view/images/glass_160.jpg" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="../view/images/glass_160.jpg" style="width:100%">
+    <img src="../view/images/glass_160.jpg" style="width:100%">
+    <img src="../view/images/glass_160.jpg" style="width:100%">
+  </div>  
+  <div class="column">
+    <img src="../view/images/glass_160.jpg" style="width:100%">
+    <img src="../view/images/glass_160.jpg" style="width:100%">
+    <img src="../view/images/glass_160.jpg" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="../view/images/glass_160.jpg" style="width:100%">
+    <img src="../view/images/glass_160.jpg" style="width:100%">
+    <img src="../view/images/glass_160.jpg" style="width:100%">
+  </div>
+  <div class="column">
+    <img src="../view/images/glass_160.jpg" style="width:100%">
+    <img src="../view/images/glass_160.jpg" style="width:100%">
+    <img src="../view/images/glass_160.jpg" style="width:100%">
+  </div>
+</div>
 
+<script>
+// Get the elements with class="column"
+var elements = document.getElementsByClassName("column");
+
+// Declare a loop variable
+var i;
+
+// Full-width images
+function one() {
+    for (i = 0; i < elements.length; i++) {
+    elements[i].style.msFlex = "20%";  // IE10
+    elements[i].style.flex = "20%";
+  }
+}
+
+// Two images side by side
+function two() {
+  for (i = 0; i < elements.length; i++) {
+    elements[i].style.msFlex = "20%";  // IE10
+    elements[i].style.flex = "20%";
+  }
+}
+
+// Four images side by side
+function four() {
+  for (i = 0; i < elements.length; i++) {
+    elements[i].style.msFlex = "20%";  // IE10
+    elements[i].style.flex = "20%";
+  }
+}
+
+// Add active class to the current button (highlight it)
+var header = document.getElementById("myHeader");
+var btns = header.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
 
 </body>
 </html>
